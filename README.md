@@ -21,7 +21,9 @@
 - Responsive Design
 - Git Version Control
 
-## Screenshots
+## Screenshots & Video Recordings
+
+[Video Link](https://drive.google.com/file/d/1OsHzI2jqx2FBYIoBfMzFK9Gdt4K1mY7U/view?usp=drive_link)
 
 ## Deployment
 

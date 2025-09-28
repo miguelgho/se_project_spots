@@ -3,7 +3,7 @@
   width: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 16px;
+  border-radius: 8px;
 }
 
 .card__content {
@@ -36,6 +36,7 @@
 }
 .card__like-btn:hover {
   opacity: 100%;
+  cursor: pointer;
 }
 @media screen and (max-width: 627px) {
   .card__image {
