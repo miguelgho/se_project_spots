@@ -35,4 +35,4 @@ This webpage is deployed to GitHub Pages:
 
 - Soon will be adding the hability to change profile picture, name, and profile description.
 
-- Give Funtionality to buttons with JavaScript
+- Give Funtionality to buttons with JavaScript.
