@@ -51,6 +51,7 @@ function handleAddCardSubmit(evt) {
 
   console.log(newPostLinkInput.value);
   console.log(newPostCaptionInput.value);
+  evt.target.reset(); // This clears all input fields
   closeModal(newPostModal);
 }
 newPostForm.addEventListener("submit", handleAddCardSubmit);
