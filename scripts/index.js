@@ -80,9 +80,7 @@ function getCardElement(data) {
 
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
   cardDeleteBtnEl.addEventListener("click", () => {
-    //cardDeleteBtnEl.closest(".card").remove(); another way to accomplish
     cardElement.remove();
-    cardElement = null; //for future memory usage
   });
 
   cardImageEl.addEventListener("click", () => {

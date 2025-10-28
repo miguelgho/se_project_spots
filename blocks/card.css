@@ -8,6 +8,10 @@
   display: block;
   border-radius: 8px;
 }
+.card__image:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 .card__delete-btn {
   width: 32px;
   height: 32px;
@@ -48,11 +52,11 @@
   height: 20px;
   border: none;
   opacity: 0.4;
+  cursor: pointer;
 }
 
 .card__like-btn:hover {
-  opacity: 100%;
-  cursor: pointer;
+  opacity: 1;
 }
 .card__like-btn_active {
   background: transparent url(../images/heart-liked.svg) center no-repeat;
