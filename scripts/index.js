@@ -1,3 +1,4 @@
+//todo passs settings obj to the validation
 const initialCards = [
   {
     name: "Golden Gate bridge",
@@ -47,6 +48,7 @@ const newPostBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const newPostForm = newPostModal.querySelector(".modal__form");
+const newPostSubmit = newPostModal.querySelector(".modal__button");
 
 const newPostLinkInput = newPostModal.querySelector("#card-image-input");
 const newPostCaptionInput = newPostModal.querySelector("#image__caption-input");
@@ -87,6 +89,7 @@ function getCardElement(data) {
     previewImageEl.src = data.link;
     previewImageEl.alt = data.name;
     previewCaption.textContent = data.name;
+
     openModal(previewModal);
   });
 
@@ -96,7 +99,14 @@ function getCardElement(data) {
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+  //OPTIONAL
+
   openModal(editProfileModal);
+  resetValidation(
+    editProfileForm,
+    [editProfileNameInput, editProfileDescriptionInput],
+    settings
+  );
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
@@ -128,17 +138,40 @@ function handleAddCardSubmit(evt) {
   };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
-  evt.target.reset(); // This clears all input fields
+  evt.target.reset();
+  disableButton(newPostSubmit, settings);
   closeModal(newPostModal);
 }
 newPostForm.addEventListener("submit", handleAddCardSubmit);
 
+function handleEscapeKey(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_is-opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+}
+
+const modals = [editProfileModal, newPostModal, previewModal];
+
+modals.forEach((modalEl) => {
+  modalEl.addEventListener("mousedown", (evt) => {
+    // Check if the click was on the modal overlay itself
+    if (evt.target === evt.currentTarget) {
+      closeModal(modalEl);
+    }
+  });
+});
+
 function openModal(modalEl) {
   modalEl.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscapeKey);
 }
 
 function closeModal(modalEl) {
   modalEl.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscapeKey);
 }
 
 initialCards.forEach(function (item) {
