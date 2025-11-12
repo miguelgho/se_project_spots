@@ -32,7 +32,7 @@ Spots is a responsive web application that allows users to share, view, and inte
 
 ## 🎥 Video Demo
 
-[View Project Demo on Google Drive](https://drive.google.com/file/d/1OsHzI2jqx2FBYIoBfMzFK9Gdt4K1mY7U/view?usp=drive_link)
+[View Project Demo on Google Drive](https://drive.google.com/file/d/1MH3A_tKw_wm75WJJ5SloBhH0acjoNCAM/view?usp=drivesdk)
 
 ---
 
