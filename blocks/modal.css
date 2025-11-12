@@ -139,12 +139,17 @@
 }
 
 .modal__error {
-  display: block;
+  display: none;
   margin-top: 8px;
   color: #ff0000b2;
   font-size: 16px;
   line-height: 110%;
 }
+
+.modal__error_visible {
+  display: block;
+}
+
 .modal__button {
   max-width: 156px;
   background: #212121;
