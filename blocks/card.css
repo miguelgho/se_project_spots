@@ -23,7 +23,7 @@
   cursor: pointer;
 }
 .card__delete-btn:hover {
-  background-image: url(../images/delete-hover.png);
+  background-image: url(../images/delete-hover.svg);
 }
 /*hover and style both status*/
 .card__content {
@@ -71,5 +71,6 @@
   }
   .card__title {
     max-width: 240px;
+    font-size: 16px;
   }
 }

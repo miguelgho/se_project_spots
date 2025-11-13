@@ -7,6 +7,7 @@
   font-weight: 500;
 }
 .profile__avatar {
+  object-fit: cover;
   height: 190px;
   width: 190px;
   margin-right: 20px;
@@ -15,6 +16,7 @@
 .profile__name {
   margin: 0 0 12px;
   font-size: 32px;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: 0;
   display: -webkit-box;

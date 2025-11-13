@@ -151,6 +151,7 @@
 }
 
 .modal__button {
+  border: none;
   max-width: 156px;
   background: #212121;
   height: 52px;
