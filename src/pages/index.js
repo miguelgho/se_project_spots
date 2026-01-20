@@ -1,32 +1,42 @@
-//todo passs settings obj to the validation
+import "./index.css";
+import { enableValidation, settings } from "../scripts/validation.js";
+
+import goldenGateImage from "../images/golden-gate.jpg";
+import valThorensImage from "../images/val-thorens.jpg";
+import terraceImage from "../images/terrace.jpg";
+import cafeImage from "../images/outdoor-cafe.jpg";
+import forestBridgeImage from "../images/forest-bridge.jpg";
+import tunnelImage from "../images/tunnel.jpg";
+import mountainHouseImage from "../images/mountain-house.jpg";
+
 const initialCards = [
   {
     name: "Golden Gate bridge",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+    link: goldenGateImage,
   },
   {
     name: "Val Thorens",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
+    link: valThorensImage,
   },
   {
     name: "Restaurant terrace",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
+    link: terraceImage,
   },
   {
     name: "An outdoor cafe",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
+    link: cafeImage,
   },
   {
     name: "A very long bridge, over the forest and through the trees",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
+    link: forestBridgeImage,
   },
   {
     name: "Tunnel with morning light",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
+    link: tunnelImage,
   },
   {
     name: "Mountain house",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
+    link: mountainHouseImage,
   },
 ];
 
@@ -35,10 +45,10 @@ const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const editProfileForm = editProfileModal.querySelector(".modal__form");
 const editProfileNameInput = editProfileModal.querySelector(
-  "#profile__name-input"
+  "#profile__name-input",
 );
 const editProfileDescriptionInput = editProfileModal.querySelector(
-  "#profile__description-input"
+  "#profile__description-input",
 );
 
 const profileNameEl = document.querySelector(".profile__name");
@@ -105,7 +115,7 @@ editProfileBtn.addEventListener("click", function () {
   resetValidation(
     editProfileForm,
     [editProfileNameInput, editProfileDescriptionInput],
-    settings
+    settings,
   );
 });
 
@@ -178,3 +188,5 @@ initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+enableValidation(settings);
