@@ -1,7 +1,9 @@
 .modal {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  transition:
+    visibility 0s linear 0.5s,
+    opacity 0.5s linear;
   background: #00000080;
   position: fixed;
   top: 0;
@@ -56,6 +58,8 @@
   letter-spacing: 0;
   padding: 4px 8px;
   margin-top: 8px;
+  min-width: 60px;
+  text-align: center;
 }
 
 .modal__close-btn {
@@ -175,6 +179,64 @@
   opacity: 0.5;
 }
 
+.modal__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#delete-confirmation-modal .modal__container {
+  max-width: 630px;
+  min-height: 172px;
+  padding: 34px 36px;
+}
+
+#delete-confirmation-modal .modal__title {
+  text-align: center;
+  font-size: 24px;
+}
+/*Places the buttons side-by-side with a gap on desktop */
+#delete-card-form {
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Primary Button Styling */
+.modal__button_type_primary {
+  background-color: #ff6565;
+  color: #212121;
+  width: 156px;
+  height: 52;
+}
+
+.modal__button_type_primary:hover {
+  background-color: #ff3333;
+  opacity: 1;
+  color: #212121;
+
+  cursor: pointer;
+}
+
+/* Secondary Button Styling */
+.modal__button_type_secondary {
+  background-color: transparent;
+  color: #212121;
+  border: 1px solid #212121;
+  width: 156px;
+  height: 52;
+}
+
+.modal__button_type_secondary:hover {
+  background-color: #212121;
+  opacity: 1;
+  color: #fff;
+  cursor: pointer;
+}
+
+#edit-avatar-modal .modal__close-btn {
+  background-color: transparent;
+}
+
 @media screen and (max-width: 627px) {
   .modal__button {
     width: 100%;
@@ -202,5 +264,10 @@
   }
   .modal__input {
     font-size: 16px;
+  }
+
+  #delete-card-form {
+    flex-direction: column;
+    gap: 12px;
   }
 }
