@@ -49,12 +49,14 @@ export const disableButton = (buttonEl, config) => {
 };
 
 export const resetValidation = (formEl, inputList, config) => {
+  const buttonEl = formEl.querySelector(config.submitButtonSelector);
   inputList.forEach((input) => {
     hideInputError(formEl, input, config);
   });
+  toggleButtonState(inputList, buttonEl, config);
 };
 
-const setEventListener = (formEl, config) => {
+const setEventListeners = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
   const buttonElement = formEl.querySelector(config.submitButtonSelector);
 
@@ -71,6 +73,6 @@ const setEventListener = (formEl, config) => {
 export const enableValidation = (config) => {
   const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formEl) => {
-    setEventListener(formEl, config);
+    setEventListeners(formEl, config);
   });
 };

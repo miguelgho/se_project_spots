@@ -10,45 +10,6 @@ import Api from "../utils/Api.js";
 
 let selectedCard, selectedCardId;
 
-import goldenGateImage from "../images/golden-gate.jpg";
-import valThorensImage from "../images/val-thorens.jpg";
-import terraceImage from "../images/terrace.jpg";
-import cafeImage from "../images/outdoor-cafe.jpg";
-import forestBridgeImage from "../images/forest-bridge.jpg";
-import tunnelImage from "../images/tunnel.jpg";
-import mountainHouseImage from "../images/mountain-house.jpg";
-
-// const initialCards = [
-//   {
-//     name: "Golden Gate bridge",
-//     link: goldenGateImage,
-//   },
-//   {
-//     name: "Val Thorens",
-//     link: valThorensImage,
-//   },
-//   {
-//     name: "Restaurant terrace",
-//     link: terraceImage,
-//   },
-//   {
-//     name: "An outdoor cafe",
-//     link: cafeImage,
-//   },
-//   {
-//     name: "A very long bridge, over the forest and through the trees",
-//     link: forestBridgeImage,
-//   },
-//   {
-//     name: "Tunnel with morning light",
-//     link: tunnelImage,
-//   },
-//   {
-//     name: "Mountain house",
-//     link: mountainHouseImage,
-//   },
-// ];
-
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
@@ -199,8 +160,7 @@ editProfileBtn.addEventListener("click", function () {
   );
 });
 
-// Select the cancel button (the second button in the delete form)
-const cancelDeleteBtn = deleteModal.querySelectorAll(".modal__button")[1];
+const cancelDeleteBtn = deleteModal.querySelector(".modal__button_cancel");
 
 if (cancelDeleteBtn) {
   cancelDeleteBtn.addEventListener("click", () => {
@@ -214,8 +174,12 @@ editProfileCloseBtn.addEventListener("click", function () {
 
 newPostBtn.addEventListener("click", function () {
   openModal(newPostModal);
+  resetValidation(
+    newPostForm,
+    [newPostLinkInput, newPostCaptionInput],
+    settings,
+  );
 });
-
 newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
 });
@@ -237,9 +201,7 @@ function handleEditProfileSubmit(evt) {
       profileDescriptionEl.textContent = userData.about;
       closeModal(editProfileModal);
     })
-    .catch((err) => {
-      console.error(err);
-    })
+    .catch(console.error)
     .finally(() => {
       submitButton.textContent = originalText;
     });
@@ -288,7 +250,7 @@ function handleAvatarFormSubmit(evt) {
   submitButton.textContent = "Saving...";
 
   api
-    .updateAvatar(avatarInput.value)
+    .updateAvatar({ avatar: avatarInput.value })
     .then((userData) => {
       profileAvatarEl.src = userData.avatar;
       closeModal(editAvatarModal);
@@ -324,7 +286,9 @@ function openModal(modalEl) {
 
 function closeModal(modalEl) {
   modalEl.classList.remove("modal_is-opened");
-  document.removeEventListener("keydown", handleEscapeKey);
+  if (!document.querySelector(".modal_is-opened")) {
+    document.removeEventListener("keydown", handleEscapeKey);
+  }
 }
 
 enableValidation(settings);
